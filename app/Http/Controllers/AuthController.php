@@ -66,7 +66,7 @@ class AuthController extends Controller
 
             return response()->json([
                 "status" => "error",
-                "message" => "Somethin went wrong in login method"
+                "message" => "Something went wrong in login method"
             ]);
 
         } catch (\Exception $e) {

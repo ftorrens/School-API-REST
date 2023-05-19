@@ -109,9 +109,38 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get an existing user.
+     *
+     * @OA\Get(
+     *     path="/api/users/{id}",
+     *     tags={"Users"},
+     *     operationId="getUserById",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the user",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid ID supplied"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="User not found"
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception"
+     *     ),
+     *     security={{"bearerToken":{}}}
+     * )
      */
-    public function show(string $id)
+    public function getUserById(string $id)
     {
         $data = User::find($id);
 
@@ -131,9 +160,74 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update an existing user.
+     *
+     * @OA\Put(
+     *     path="/api/users/{id}",
+     *     tags={"Users"},
+     *     operationId="updateUser",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the user that needs to be updated",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid ID supplied"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="User not found"
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception"
+     *     ),
+     *     @OA\RequestBody(
+     *         description="Input data format",
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 required={
+     *                  "first_name",
+     *                  "last_name",
+     *                  "email",
+     *                  "password"
+     *                  },
+     *                 @OA\Property(
+     *                     property="first_name",
+     *                     description="Updated user's name",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="last_name",
+     *                     description="Updated user's last name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     description="Updated user's email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     description="Updated user's password",
+     *                     type="string",
+     *                     format="password"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     security={{"bearerToken":{}}}
+     * )
      */
-    public function update(Request $request, string $id)
+    public function updateUser(Request $request, string $id)
     {
         $data = User::find($id);
 
@@ -166,9 +260,38 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete an existing user.
+     *
+     * @OA\Delete(
+     *     path="/api/users/{id}",
+     *     tags={"Users"},
+     *     operationId="deleteUser",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the user that needs to be delete",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid ID supplied"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="User not found"
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Validation exception"
+     *     ),
+     *     security={{"bearerToken":{}}}
+     * )
      */
-    public function destroy(string $id)
+    public function deleteUser(string $id)
     {
         $data = User::find($id);
 

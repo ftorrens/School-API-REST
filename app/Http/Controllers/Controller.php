@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
+//TODO: Mostrar todos los endpoint abiertos al cargar la docu
+
 /**
  * @OA\Info(
  *   title="School API REST Documentation",
