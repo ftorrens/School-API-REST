@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->integer("hours");
-            $table->float("price");
-            $table->float("percent_teacher");
+            $table->string("name", "255");
+            $table->integer("hours")->lenght(3);
+            $table->float("price", 4 , 2);
+            $table->integer("percent_teacher")->lenght(4);
             $table->date("start_date");
             $table->date("finish_date");
             $table->timestamps();

@@ -95,6 +95,285 @@
                 ]
             }
         },
+        "/api/courses": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Get all courses",
+                "operationId": "getCourses",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Create a course.",
+                "operationId": "insertCourses",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "hours",
+                                    "price",
+                                    "percent_teacher",
+                                    "start_date",
+                                    "finish_date"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Insert courses's name",
+                                        "type": "string"
+                                    },
+                                    "hours": {
+                                        "description": "Insert courses's hours",
+                                        "type": "integer"
+                                    },
+                                    "price": {
+                                        "description": "Insert courses's price",
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "percent_teacher": {
+                                        "description": "Insert courses's percent teacher",
+                                        "type": "number",
+                                        "format": "%"
+                                    },
+                                    "start_date": {
+                                        "description": "Insert courses's start date",
+                                        "type": "string",
+                                        "format": "YYYY-MM-DD"
+                                    },
+                                    "finish_date": {
+                                        "description": "Insert courses's finish date",
+                                        "type": "string",
+                                        "format": "YYYY-MM-DD"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
+        "/api/courses/{id}": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Get an existing course.",
+                "operationId": "getCourseById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the student",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Student not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Update an existing course.",
+                "operationId": "updateCourse",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the course that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "hours",
+                                    "price",
+                                    "percent_teacher",
+                                    "start_date",
+                                    "finish_date"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Insert courses's name",
+                                        "type": "string"
+                                    },
+                                    "hours": {
+                                        "description": "Insert courses's hours",
+                                        "type": "integer"
+                                    },
+                                    "price": {
+                                        "description": "Insert courses's price",
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "percent_teacher": {
+                                        "description": "Insert courses's percent teacher",
+                                        "type": "number",
+                                        "format": "%"
+                                    },
+                                    "start_date": {
+                                        "description": "Insert courses's start date",
+                                        "type": "string",
+                                        "format": "YYYY-MM-DD"
+                                    },
+                                    "finish_date": {
+                                        "description": "Insert courses's finish date",
+                                        "type": "string",
+                                        "format": "YYYY-MM-DD"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Student not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Delete an existing course.",
+                "operationId": "deleteCourse",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the course that needs to be delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Student not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
+        "/api/courses_student/{id}": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Get courses's students.",
+                "operationId": "getCourseStudents",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the student",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Student not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        },
         "/api/students": {
             "get": {
                 "tags": [
@@ -121,7 +400,7 @@
                     "Students"
                 ],
                 "summary": "Create a student.",
-                "operationId": "saveStudent",
+                "operationId": "insertStudents",
                 "requestBody": {
                     "description": "Input data format",
                     "content": {

@@ -18,8 +18,8 @@ class CourseFactory extends Factory
     {
         return [
             "name" => $this->faker->words(2, true),
-            "hours" => $this->faker->numberBetween(100, 200),
-            "price" => $this->faker->numberBetween(100, 200),
+            "hours" => $this->faker->randomNumber(2, false),
+            "price" => $this->faker->randomNumber(2, false),
             "percent_teacher" => $this->faker->numberBetween(10, 20),
             "start_date" => $this->faker->dateTimeBetween('-1 week', '+1 week'),
             "finish_date" => $this->faker->dateTimeThisYear('+1 months'),

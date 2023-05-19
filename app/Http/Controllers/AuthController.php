@@ -39,7 +39,7 @@ class AuthController extends Controller
      *                 @OA\Property(
      *                     property="password",
      *                     description="Insert the password",
-     *                     type="password"
+     *                     type="password",
      *                 )
      *             )
      *         )
